@@ -5,11 +5,40 @@ visaul studio .17 版本 VueTypeScriptAspNet7.0
 >
 
 - node_modules 已刪除，需重新下載
+
 - urlrewrite 請自行放到前臺服務站臺底下
+
 - vueapp 預設使用 vite proxy 加入 changeOrigin: true
+
 - webapi 有自行加入 Cors 設定
+
 - 主要請看：
+
   - 專案 vueapp >   
-    - 轉址設定：vite.config.ts
-    -  src > components
-      -   頁面：HelloWorld.vue
+
+    - vite.config.ts
+      - 轉址設定
+    -  src > components > HelloWorld.vue
+      -   頁面
+
+  - 專案 webapi > Program.cs
+
+    - Cros 設定
+
+      ```c#
+      //....
+      var AllowMyFrontEnd = "AllowMyFrontEnd";
+      builder.Services.AddCors(options =>
+      {
+          options.AddPolicy(name: AllowMyFrontEnd,
+          policy =>
+          {
+              policy.WithOrigins("http://localhost:8095").AllowAnyMethod().AllowAnyHeader();
+          });
+      });
+      
+      //....
+      app.UseCors(AllowMyFrontEnd);
+      ```
+
+      
