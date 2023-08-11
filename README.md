@@ -41,4 +41,25 @@ visaul studio .17 版本 VueTypeScriptAspNet7.0
       app.UseCors(AllowMyFrontEnd);
       ```
 
-      
+  - 前臺目錄 urlrewrite 設定 web.config
+
+    ```xml
+    <?xml version="1.0" encoding="UTF-8"?>
+    <configuration>
+        <system.webServer>
+            <rewrite>
+                <rules>
+                    <rule name="SPA" stopProcessing="true">
+                        <match url=".*" />
+    					<action type="Rewrite" url="/" />
+                        <conditions>
+                            <add input="{REQUEST_FILENAME}" matchType="IsFile" negate="true" />
+                        </conditions>
+                    </rule>
+                </rules>
+            </rewrite>
+        </system.webServer>
+    </configuration>
+    ```
+
+    
