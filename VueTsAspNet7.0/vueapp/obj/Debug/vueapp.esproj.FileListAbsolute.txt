@@ -1,0 +1,1 @@
+D:\KGI\joe\LearnProject\VueTsAspNetCoreTest\vueapp\obj\Debug\vueapp.esproj.CoreCompileInputs.cache
